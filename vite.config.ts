@@ -30,7 +30,7 @@ export default defineConfig({
 
     }),
     Components({
-      dirs: ['./src/components', './src/layout'],
+      dirs: ['./src/components', './src/layout', './src/views'],
       dts: './src/types/components.d.ts'
     }),
     UnpluginSvgComponent({

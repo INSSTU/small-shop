@@ -1,8 +1,9 @@
-
-import { createApp } from 'vue'
-
+import '@/assets/styles/index.scss'
 import App from './App.vue'
+import SvgIcon from '~virtual/svg-component'
+
 
 const app = createApp(App)
-
+app.component(SvgIcon.name as string, SvgIcon)
+app.use(router)
 app.mount('#app')

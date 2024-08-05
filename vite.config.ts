@@ -6,6 +6,8 @@ import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 // 引入自动导入组件插件
 import Components from 'unplugin-vue-components/vite'
+// 引入svg插件
+import UnpluginSvgComponent from 'unplugin-svg-component/vite'
 
 
 
@@ -28,7 +30,14 @@ export default defineConfig({
 
     }),
     Components({
+      dirs: ['./src/components', './src/layout'],
       dts: './src/types/components.d.ts'
+    }),
+    UnpluginSvgComponent({
+      iconDir: ['./src/assets/svg'],
+      dts: true,
+      dtsDir: './src/types',
+      prefix: 'icon',
     })
   ],
   resolve: {

@@ -1,8 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <routerView></routerView>
+  <div>主页</div>
 </template>
 
-<style scoped>
-</style>
+<style lang="scss" scoped></style>

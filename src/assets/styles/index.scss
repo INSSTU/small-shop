@@ -1,0 +1,16 @@
+@import 'normalize.css';
+@import './variables.css';
+
+html {
+  font-size: calc(100vw/375);
+}
+
+body {
+  font: 12px 'Microsoft YaHei';
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}

@@ -1,8 +1,14 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const scrollEle = ref(null)
+
+provide(SCROLL_ELE, scrollEle)
+</script>
 
 <template>
-  <router-view class="main"></router-view>
-  <BottomNav></BottomNav>
+  <div class="main" ref="scrollEle">
+    <router-view></router-view>
+    <BottomNav></BottomNav>
+  </div>
 </template>
 
 <style lang="scss" scoped>

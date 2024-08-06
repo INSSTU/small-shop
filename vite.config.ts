@@ -22,7 +22,7 @@ export default defineConfig({
         "vue-router",
         "pinia",
         {
-          '@vueuse/core': [['useFetch', 'useFetch2'], 'createFetch', 'useInfiniteScroll']
+          '@vueuse/core': [['useFetch', 'useFetch2'], 'createFetch', 'useInfiniteScroll', 'refDebounced']
         },
 
       ],

@@ -6,9 +6,15 @@ const scrollEle = inject<Ref<HTMLDivElement>>(SCROLL_ELE)
 
 const route = useRoute()
 
+const props = defineProps<{
+  keyword?:string
+}>()
+
 const url = computed(() => {
   if (route.params.categoryId) {
     return `products/category/${route.params.categoryId}?page=${pageNumber.value}&limit=5`
+  } else if(props.keyword) {
+    return `products/search?name=${props.keyword}&page=${pageNumber.value}`
   } else {
     return `products?page=${pageNumber.value}`
   }
@@ -24,6 +30,14 @@ watchEffect(() => {
     }
   }
 })
+
+
+watch(
+  () => props.keyword,
+  () => {
+    pageNumber.value = 1
+  },
+)
 
 onBeforeRouteUpdate(() => {
   pageNumber.value = 1
@@ -50,6 +64,7 @@ useInfiniteScroll(
       <h3 class="price">{{ item.price }}</h3>
     </div>
   </div>
+  <p class="msg" v-show="!isFetching && products.length === 0">没有数据</p>
   <p class="msg" v-show="isFetching">---- 加载中 ----</p>
   <p class="msg" v-show="!isFetching && data?.totalPages === pageNumber">
     ---- 已经加载到最后 ----

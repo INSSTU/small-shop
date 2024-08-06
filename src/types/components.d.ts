@@ -7,6 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    Auth: typeof import('./../views/Auth.vue')['default']
     BackButton: typeof import('./../components/Button/BackButton.vue')['default']
     BackTopButton: typeof import('./../components/Button/BackTopButton.vue')['default']
     BottomButton: typeof import('./../components/Button/BottomButton.vue')['default']
@@ -16,8 +17,10 @@ declare module 'vue' {
     CategoryList: typeof import('./../views/home/CategoryList.vue')['default']
     Counter: typeof import('./../components/counter.vue')['default']
     FixedButton: typeof import('./../components/Button/FixedButton.vue')['default']
+    FormInput: typeof import('./../components/FormInput.vue')['default']
     Home: typeof import('./../views/home/Home.vue')['default']
     Layout: typeof import('./../layout/Layout.vue')['default']
+    Login: typeof import('./../views/Login.vue')['default']
     Notification: typeof import('./../components/Notification/Notification.vue')['default']
     NotificationItem: typeof import('./../components/Notification/NotificationItem.vue')['default']
     Product: typeof import('./../views/Product.vue')['default']
@@ -25,6 +28,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Search: typeof import('./../views/Search.vue')['default']
+    Signup: typeof import('./../views/Signup.vue')['default']
     User: typeof import('./../views/User.vue')['default']
   }
 }

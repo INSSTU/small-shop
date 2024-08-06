@@ -49,6 +49,9 @@ const routes:RouteRecordRaw[] = [
       {
         path: '/user',
         component: () => import('@/views/User.vue'),
+        meta: {
+          needAuth: true,
+        },
       },
     ]
   },
@@ -57,9 +60,34 @@ const routes:RouteRecordRaw[] = [
     component: () => import('@/views/Product.vue'),
     props: true,
   },
+  {
+    path: '/login',
+    component: () => import('@/views/Auth.vue'),
+  },
+  {
+    path: '/signup',
+    component: () => import('@/views/Auth.vue'),
+  },
 ]
 
-export default createRouter({
+const router = createRouter({
   history: createWebHistory(),
   routes,
 })
+
+router.beforeEach((to) => {
+  const loginUser = useLoginUserStore()
+  const notification = useNotificationStore()
+  if(to.meta.needAuth) {
+    if(!loginUser.isLogin) {
+      notification.addNotice({
+        id: Date.now(),
+        msg: '请登录后再访问',
+        status: 'warning'
+      })
+      return '/login'
+    }
+  }
+})
+
+export default router

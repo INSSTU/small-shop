@@ -85,6 +85,9 @@ declare global {
   const useLink: typeof import('vue-router')['useLink']
   const useLocalStorage: typeof import('@vueuse/core')['useLocalStorage']
   const useLocalStoreage: typeof import('@vueuse/core')['useLocalStoreage']
+  const useLogin: typeof import('../stores/index')['useLogin']
+  const useLoginUser: typeof import('../stores/index')['useLoginUser']
+  const useLoginUserStore: typeof import('../stores/index')['useLoginUserStore']
   const useNotification: typeof import('../stores/index')['useNotification']
   const useNotificationStore: typeof import('../stores/index')['useNotificationStore']
   const useRoute: typeof import('vue-router')['useRoute']
@@ -179,6 +182,7 @@ declare module 'vue' {
     readonly useInfiniteScroll: UnwrapRef<typeof import('@vueuse/core')['useInfiniteScroll']>
     readonly useLink: UnwrapRef<typeof import('vue-router')['useLink']>
     readonly useLocalStorage: UnwrapRef<typeof import('@vueuse/core')['useLocalStorage']>
+    readonly useLoginUserStore: UnwrapRef<typeof import('../stores/index')['useLoginUserStore']>
     readonly useNotificationStore: UnwrapRef<typeof import('../stores/index')['useNotificationStore']>
     readonly useRoute: UnwrapRef<typeof import('vue-router')['useRoute']>
     readonly useRouter: UnwrapRef<typeof import('vue-router')['useRouter']>

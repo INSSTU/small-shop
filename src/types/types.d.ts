@@ -26,3 +26,15 @@ interface Notice {
   duration?: number
 }
 
+interface User {
+  id: number
+  username: string
+  email: string
+  avatar_url: string
+}
+
+interface LoginUser {
+  token: string
+  user: User
+}
+

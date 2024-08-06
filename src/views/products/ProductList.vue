@@ -4,26 +4,40 @@ const products = ref<Product[]>([])
 const pageNumber = ref(1)
 const scrollEle = inject<Ref<HTMLDivElement>>(SCROLL_ELE)
 
-const url = computed(() => `products?page=${pageNumber.value}`)
+const route = useRoute()
+
+const url = computed(() => {
+  if (route.params.categoryId) {
+    return `products/category/${route.params.categoryId}?page=${pageNumber.value}&limit=5`
+  } else {
+    return `products?page=${pageNumber.value}`
+  }
+})
 const { data, isFetching } = useFetch(url).json<Page<Product>>()
 
 watchEffect(() => {
-  if(data.value) {
-    products.value.push(...data.value.data)
+  if (data.value) {
+    if (data.value.currentPage === 1) {
+      products.value = data.value.data
+    } else {
+      products.value.push(...data.value.data)
+    }
   }
+})
+
+onBeforeRouteUpdate(() => {
+  pageNumber.value = 1
 })
 
 useInfiniteScroll(
   scrollEle,
   () => {
-    if(data.value && pageNumber.value < data.value.totalPages) {
+    if (data.value && pageNumber.value < data.value.totalPages) {
       pageNumber.value++
     }
   },
-  { distance: 100, interval: 200, },
+  { distance: 100, interval: 200 },
 )
-
-
 </script>
 
 <template>
@@ -37,7 +51,9 @@ useInfiniteScroll(
     </div>
   </div>
   <p class="msg" v-show="isFetching">---- 加载中 ----</p>
-  <p class="msg" v-show="!isFetching && data?.totalPages === pageNumber">---- 已经加载到最后 ----</p>
+  <p class="msg" v-show="!isFetching && data?.totalPages === pageNumber">
+    ---- 已经加载到最后 ----
+  </p>
 </template>
 
 <style lang="scss" scoped>

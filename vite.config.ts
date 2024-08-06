@@ -19,6 +19,8 @@ export default defineConfig({
       // vue相关自动导入配置
       imports:[
         "vue",
+        "vue-router",
+        "pinia",
         {
           '@vueuse/core': [['useFetch', 'useFetch2'], 'createFetch', 'useInfiniteScroll']
         },

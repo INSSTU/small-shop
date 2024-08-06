@@ -13,6 +13,12 @@ const routes:RouteRecordRaw[] = [
       {
         path: '/home',
         component: () => import('@/views/home/Home.vue'),
+        children: [
+          {
+            path: ':categoryId',
+            component: () => import('@/views/home/Home.vue'),
+          },
+        ],
       },
     ]
   },

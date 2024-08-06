@@ -57,7 +57,7 @@ const categoryData:Array<{
         <SvgIcon :name="item.icon"></SvgIcon>
         <span>{{item.name}}</span>
       </router-link>
-    </div>
+  </div>
 </template>
 
 <style lang="scss" scoped>

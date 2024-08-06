@@ -61,7 +61,7 @@ useInfiniteScroll(
         <img :src="item.image_url" :alt="item.name" />
       </div>
       <h2 class="name">{{ item.name }}</h2>
-      <h3 class="price">{{ item.price }}</h3>
+      <h3 class="price">{{ item.price.toFixed(2) }}</h3>
     </routerLink>
   </div>
   <p class="msg" v-show="!isFetching && products.length === 0">没有数据</p>

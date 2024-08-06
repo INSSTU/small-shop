@@ -74,6 +74,8 @@ declare global {
   const unref: typeof import('vue')['unref']
   const use: typeof import('@vueuse/core')['use']
   const useAttrs: typeof import('vue')['useAttrs']
+  const useCart: typeof import('../stores/index')['useCart']
+  const useCartStore: typeof import('../stores/index')['useCartStore']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
   const useFetch: typeof import('../utils/useFetch')['default']
@@ -81,6 +83,10 @@ declare global {
   const useInfinit: typeof import('@vueuse/core')['useInfinit']
   const useInfiniteScroll: typeof import('@vueuse/core')['useInfiniteScroll']
   const useLink: typeof import('vue-router')['useLink']
+  const useLocalStorage: typeof import('@vueuse/core')['useLocalStorage']
+  const useLocalStoreage: typeof import('@vueuse/core')['useLocalStoreage']
+  const useNotification: typeof import('../stores/index')['useNotification']
+  const useNotificationStore: typeof import('../stores/index')['useNotificationStore']
   const useRoute: typeof import('vue-router')['useRoute']
   const useRouter: typeof import('vue-router')['useRouter']
   const useScroll: typeof import('@vueuse/core')['useScroll']
@@ -166,12 +172,14 @@ declare module 'vue' {
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
     readonly unref: UnwrapRef<typeof import('vue')['unref']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
+    readonly useCartStore: UnwrapRef<typeof import('../stores/index')['useCartStore']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
-    readonly useFetch2: UnwrapRef<typeof import('@vueuse/core')['useFetch']>
     readonly useFetch: UnwrapRef<typeof import('../utils/useFetch')['default']>
     readonly useInfiniteScroll: UnwrapRef<typeof import('@vueuse/core')['useInfiniteScroll']>
     readonly useLink: UnwrapRef<typeof import('vue-router')['useLink']>
+    readonly useLocalStorage: UnwrapRef<typeof import('@vueuse/core')['useLocalStorage']>
+    readonly useNotificationStore: UnwrapRef<typeof import('../stores/index')['useNotificationStore']>
     readonly useRoute: UnwrapRef<typeof import('vue-router')['useRoute']>
     readonly useRouter: UnwrapRef<typeof import('vue-router')['useRouter']>
     readonly useScroll: UnwrapRef<typeof import('@vueuse/core')['useScroll']>

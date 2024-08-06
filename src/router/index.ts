@@ -38,7 +38,7 @@ const routes:RouteRecordRaw[] = [
     children: [
       {
         path: '/cart',
-        component: () => import('@/views/Cart.vue'),
+        component: () => import('@/views/cart/Cart.vue'),
       },
     ]
   },

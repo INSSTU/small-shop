@@ -5,25 +5,41 @@ const props = defineProps<{
 
 const { data, error } = useFetch(`products/${props.id}`).json<Product>()
 
-const count = ref(0)
+const count = ref(1)
+
+const cart = useCartStore()
+const router = useRouter()
+const notification = useNotificationStore()
+const addCartHandler = (product:Product) => {
+  cart.addItems(product, count.value)
+  router.push("/cart")
+  notification.addNotice({
+    id: Date.now(),
+    msg: "添加成功!",
+    status: "success",
+  })
+}
+
+
+
 </script>
 
 <template>
   <div class="product">
     <BackButton></BackButton>
-    <template v-if="!error">
+    <template v-if="!error && data">
       <div class="img-wrap">
-        <img :src="data?.image_url" :alt="data?.name" />
+        <img :src="data.image_url" :alt="data.name" />
       </div>
       <div class="desc-wrap">
-        <h2 class="name">{{ data?.name }}</h2>
-        <h3 class="price">{{ data?.price }}</h3>
+        <h2 class="name">{{ data.name }}</h2>
+        <h3 class="price">{{ data.price.toFixed(2) }}</h3>
         <counter v-model:count="count">- <input type="text" /> +</counter>
-        <p class="desc">{{ data?.descripting }}</p>
+        <p class="desc">{{ data.descripting }}</p>
       </div>
-      <FixedButton class="cart">加入购物车</FixedButton>
+      <BottomButton class="cart" @click="addCartHandler(data)">加入购物车</BottomButton>
     </template>
-    <p v-else>数据异常...</p>
+    <p v-else-if="error">数据异常...</p>
   </div>
 </template>
 

@@ -15,7 +15,7 @@ const count = computed({
 
 <template>
   <div class="counter">
-    <button @click="count--">
+    <button @click="count--" :disable="count <= 1">
       <SvgIcon name="icon-remove"></SvgIcon>
     </button>
     <input type="text" v-model="count">

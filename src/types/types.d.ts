@@ -15,3 +15,14 @@ interface Page<T> {
   currentPage: number
   itemsPerPage: number
 }
+
+type CartItem = Product & { count: number }
+
+type NoticeStatus = 'success' | 'warning'
+interface Notice {
+  id: number
+  msg: string
+  status: NoticeStatus
+  duration?: number
+}
+

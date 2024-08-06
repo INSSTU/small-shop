@@ -56,19 +56,20 @@ useInfiniteScroll(
 
 <template>
   <div class="product-list">
-    <div class="product" v-for="item in products" :key="item.id">
+    <routerLink :to="`/product/${item.id}`" class="product" v-for="item in products" :key="item.id">
       <div class="img-wrap">
         <img :src="item.image_url" :alt="item.name" />
       </div>
       <h2 class="name">{{ item.name }}</h2>
       <h3 class="price">{{ item.price }}</h3>
-    </div>
+    </routerLink>
   </div>
   <p class="msg" v-show="!isFetching && products.length === 0">没有数据</p>
   <p class="msg" v-show="isFetching">---- 加载中 ----</p>
   <p class="msg" v-show="!isFetching && data?.totalPages === pageNumber">
     ---- 已经加载到最后 ----
   </p>
+  <BackTopButton></BackTopButton>
 </template>
 
 <style lang="scss" scoped>

@@ -52,6 +52,11 @@ const routes:RouteRecordRaw[] = [
       },
     ]
   },
+  {
+    path: '/product/:id',
+    component: () => import('@/views/Product.vue'),
+    props: true,
+  },
 ]
 
 export default createRouter({

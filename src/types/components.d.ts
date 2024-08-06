@@ -7,11 +7,16 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    BackButton: typeof import('./../components/Button/BackButton.vue')['default']
+    BackTopButton: typeof import('./../components/Button/BackTopButton.vue')['default']
     BottomNav: typeof import('./../layout/BottomNav.vue')['default']
     Cart: typeof import('./../views/Cart.vue')['default']
     CategoryList: typeof import('./../views/home/CategoryList.vue')['default']
+    Counter: typeof import('./../components/counter.vue')['default']
+    FixedButton: typeof import('./../components/Button/FixedButton.vue')['default']
     Home: typeof import('./../views/home/Home.vue')['default']
     Layout: typeof import('./../layout/Layout.vue')['default']
+    Product: typeof import('./../views/Product.vue')['default']
     ProductList: typeof import('./../views/products/ProductList.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

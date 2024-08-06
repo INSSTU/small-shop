@@ -1,7 +1,7 @@
 export const useLoginUserStore = defineStore('loginUser', {
   state: () => {
     return {
-      loginUser: useLocalStorage<LoginUser | {}>('loginUser', {})
+      loginUser: useLocalStorage<LoginUser>('loginUser', {})
     }
   },
   getters: {
@@ -14,7 +14,7 @@ export const useLoginUserStore = defineStore('loginUser', {
       this.loginUser = loginUser
     },
     logout() {
-      this.loginUser = []
+      this.loginUser={}
     }
   }
 })

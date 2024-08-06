@@ -6,8 +6,13 @@
 export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
+  const SC: typeof import('../constant/key')['SC']
+  const SCROLL_ELE: typeof import('../constant/key')['SCROLL_ELE']
   const computed: typeof import('vue')['computed']
+  const creat: typeof import('@vueuse/core')['creat']
+  const create: typeof import('@vueuse/core')['create']
   const createApp: typeof import('vue')['createApp']
+  const createFetch: typeof import('@vueuse/core')['createFetch']
   const customRef: typeof import('vue')['customRef']
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
   const defineComponent: typeof import('vue')['defineComponent']
@@ -50,10 +55,16 @@ declare global {
   const toRefs: typeof import('vue')['toRefs']
   const toValue: typeof import('vue')['toValue']
   const triggerRef: typeof import('vue')['triggerRef']
+  const undefined: typeof import('@vueuse/core')['undefined']
   const unref: typeof import('vue')['unref']
+  const use: typeof import('@vueuse/core')['use']
   const useAttrs: typeof import('vue')['useAttrs']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
+  const useFetch: typeof import('../utils/useFetch')['default']
+  const useFetch2: typeof import('@vueuse/core')['useFetch']
+  const useInfinit: typeof import('@vueuse/core')['useInfinit']
+  const useInfiniteScroll: typeof import('@vueuse/core')['useInfiniteScroll']
   const useSlots: typeof import('vue')['useSlots']
   const viteConfig: typeof import('../../vite.config')['default']
   const watch: typeof import('vue')['watch']
@@ -73,8 +84,10 @@ declare module 'vue' {
   interface GlobalComponents {}
   interface ComponentCustomProperties {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
+    readonly SCROLL_ELE: UnwrapRef<typeof import('../constant/key')['SCROLL_ELE']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly createApp: UnwrapRef<typeof import('vue')['createApp']>
+    readonly createFetch: UnwrapRef<typeof import('@vueuse/core')['createFetch']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
@@ -121,6 +134,9 @@ declare module 'vue' {
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
+    readonly useFetch2: UnwrapRef<typeof import('@vueuse/core')['useFetch']>
+    readonly useFetch: UnwrapRef<typeof import('../utils/useFetch')['default']>
+    readonly useInfiniteScroll: UnwrapRef<typeof import('@vueuse/core')['useInfiniteScroll']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>
     readonly watchEffect: UnwrapRef<typeof import('vue')['watchEffect']>

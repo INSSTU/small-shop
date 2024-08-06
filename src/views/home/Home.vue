@@ -1,9 +1,14 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const scrollEle = ref(null)
+
+provide(SCROLL_ELE, scrollEle)
+</script>
 
 <template>
-  <div>
+  <div ref="scrollEle">
     <h1 class="title">再来</h1>
     <CategoryList></CategoryList>
+    <ProductList></ProductList>
   </div>
 </template>
 

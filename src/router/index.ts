@@ -4,6 +4,10 @@ const layout = () => import('@/layout/Layout.vue');
 const routes:RouteRecordRaw[] = [
   {
     path: '/',
+    redirect: '/home',
+  },
+  {
+    path: '/',
     component: layout,
     children: [
       {

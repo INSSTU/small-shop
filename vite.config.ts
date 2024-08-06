@@ -17,7 +17,13 @@ export default defineConfig({
     vue(),
     AutoImport({
       // vue相关自动导入配置
-      imports:["vue"],
+      imports:[
+        "vue",
+        {
+          '@vueuse/core': [['useFetch', 'useFetch2'], 'createFetch', 'useInfiniteScroll']
+        },
+
+      ],
 
       // 通知TS自动导入的内容
       dts: './src/types/auto-imports.d.ts',

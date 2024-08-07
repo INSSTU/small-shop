@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import { useAsyncValidator } from '@vueuse/integrations/useAsyncValidator'
 import type { Rules } from 'async-validator'
-const route = useRoute()
 
 const isLogin = computed(() => route.path === '/login')
-
-const formData = reactive({ username: '', email: 'swk@hgs.com', password: '123123', confirmPassword: '' })
 
 const rules = computed(() => {
   let rules: Rules = {
@@ -72,21 +69,35 @@ const rules = computed(() => {
   return rules
 })
 
+const route = useRoute()
+
+const formData = reactive({
+  username: '',
+  email: 'swk@hgs.com',
+  password: '123123',
+  confirmPassword: '',
+})
+
 const { pass, errorFields } = useAsyncValidator(formData, rules)
 
 const url = computed(() => {
-  if(isLogin.value) {
+  if (isLogin.value) {
     return 'users/login'
   } else {
     return 'user/signup'
   }
 })
 
-const { execute } = useFetch(url, { immediate:false }).post(formData)
+const { execute } = useFetch(url, { immediate: false }).post(formData)
+
 const notification = useNotificationStore()
+
 const loginUser = useLoginUserStore()
+
+const router = useRouter()
+
 const submitHandler = () => {
-  if(isLogin.value) {
+  if (isLogin.value) {
     execute()
       .then((res) => res.json())
       .then((json) => {
@@ -108,12 +119,11 @@ const submitHandler = () => {
       })
   }
 }
-
 </script>
 
 <template>
-  <div class="Auth">
-    <BackButton :disabled="!pass"></BackButton>
+  <div class="auth">
+    <BackButton></BackButton>
     <h1 class="info">
       <template v-if="isLogin">您好，欢迎回来</template>
       <template v-else>欢迎加入</template>
@@ -145,9 +155,11 @@ const submitHandler = () => {
         type="password"
         toggle
       ></FormInput>
-      <template v-if="isLogin">还没有账号？<RouterLink to="/signup">注册</RouterLink></template>
-      <template v-else>已有账号？<RouterLink to="/login">登录</RouterLink></template>
-      <BottomButton>
+      <p>
+        <template v-if="isLogin">还没有账号？<RouterLink to="/signup">注册</RouterLink></template>
+        <template v-else>已有账号？<RouterLink to="/login">登录</RouterLink></template>
+      </p>
+      <BottomButton :disabled="!pass">
         <template v-if="isLogin">登录</template>
         <template v-else>注册</template>
       </BottomButton>
